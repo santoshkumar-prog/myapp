@@ -1,24 +1,23 @@
-import React from 'react';
-
-const Ninjas = ({ninjas}) => {
-       // console.log(this.props);
-       //const { ninjas } = props; 
-       const ninjaList = ninjas.map(ninja => {
-           return(
-            <div className="Ninjas" key={ninja.id}>
-            <div>name: {ninja.name}</div>
-            <div>age: {ninja.age}</div>
-            <div>belt: {ninja.belt}</div>
-        
-        </div>
-           )
-       })
-       return (
-           <div className="ninja-list">
-               {ninjaList}
-           </div>
-        );
-
+import React from 'react'
+import './Ninja.css'
+const Ninjas = ({ninjas, deleteNinja}) => {
+  return (
+    <div className="ninja-list">
+      { 
+        ninjas.map(ninja => {
+          return (
+            <div className="ninja" key={ninja.id}>
+              <div>Name: { ninja.name }</div>
+              <div>Age: { ninja.age }</div>
+              <div>Belt: { ninja.belt }</div>
+              <button onClick={() => {deleteNinja(ninja.id)}}>Delete ninja</button>
+              <hr />
+            </div>
+          )
+        })
+      }
+    </div>
+  );
 }
 
-export default Ninjas;
+export default Ninjas
